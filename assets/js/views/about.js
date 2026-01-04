@@ -4,9 +4,24 @@ export default async function About() {
     <div class="container">
       <div class="kicker">O nama</div>
       <h1>Gradimo povjerenje kroz pouzdan transport i kvalitetna vozila.</h1>
-      <p class="lead muted">
-        Ovdje ubaciš svoju priču: kada je firma osnovana, gdje radite, šta vas izdvaja.
-      </p>
+      <div class="container hero__grid">
+        <p class="lead muted">
+          Želite siguran i pouzdan prevoz robe?<br><br>
+          Na pravom ste mjestu!<br><br>
+          IBEM KOMERC d.o.o. je privatna firma osnovana 2002. godine, sa sjedištem u Kalesiji. Bavimo se medjunarodnim transportom robe kako u mnoge europske zemlje 
+          tako i izvan njenih granica. Trenutno posjedujemo 10 aktivnih šlepera, sa standard i mega prikolicama. Svi kamioni su euro 6 norme, 
+          a sva priključna vozila su mladja od 5 godina. O sigurnosti vaše robe, ne morate brinuti jer je ista kasko osigurana.<br><br>
+          Pored transporta robe, u našem vlasništvu se nalazi benzinska pumpa, na kojoj se toči najkvalitetnije IsoMax gorivo i spadamo u velike Hifa partnere.
+          Takodjer se bavimo prodajom svih motornih i priključnih vozila.
+        </p>
+        <div class="hero__media">
+          <img
+            src="assets/img/hero-truck.jpg"
+            alt="Vozni park i transport"
+            loading="eager"
+          />
+        </div>
+      </div>
     </div>
   </section>
 
@@ -25,12 +40,28 @@ export default async function About() {
         <p>Odgovornost, tačnost, kvalitet usluge i dugoročna saradnja.</p>
       </div>
     </div>
-  </section>
+
+<div class="container banzinskacontainer">
+  <h1 style="margin-top: 36px; margin-bottom: 54px;">Benzinska pumpa</h1>
+  <div class="container hero__grid">
+    <div class="hero__media">
+      <img
+        src="assets/img/hero-truck.jpg"
+        alt="Vozni park i transport"
+        loading="eager"
+      />
+    </div>
+    <p class="lead muted aboutdiv">
+      Naša firma posjeduje benzinsku pumpu, koja je se može pohvaliti sa najkvalitetnijim IsoMax gorivom i dugogodišnjom suradnjom sa Hifa oil-om, 
+      te spadamo u njihove velike partnere. U sastavu pumpe se nalazi market u kojem se možete odmoriti i osvježiti, a na usluzi će Vam biti naši prijatni uposlenici.
+    </p>
+  </div>
+</div>
 
   <section class="section section--alt">
     <div class="container split">
       <div>
-        <h2>Naš tim i vozni park</h2>
+        <h2 class="nastim">Naš tim i vozni park</h2>
         <p class="muted">
           Opiši tim, certifikate, broj vozila, tipove (šleperi, hladnjače, kiperi),
           iskustvo vozača i sigurnosne procedure.
@@ -42,7 +73,7 @@ export default async function About() {
         </div>
       </div>
 
-      <div class="panel">
+      <div class="panel panelbrojke">
         <h3>Brojke (primjeri)</h3>
         <div class="kv"><span>Godina osnivanja</span><strong>2014</strong></div>
         <div class="kv"><span>Vozila</span><strong>12</strong></div>

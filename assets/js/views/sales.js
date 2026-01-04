@@ -35,7 +35,7 @@ export default async function Sales() {
       <div class="panel">
         <h3>Treba određeni model?</h3>
         <p class="muted">Pošalji nam budžet, godište i namjenu — predložićemo opcije.</p>
-        <a class="btn btn--primary btn--full" href="/contact" data-link>Pošalji upit</a>
+        <a class="btn btn--primary btn--full" href="/#/contact" data-link>Pošalji upit</a>
       </div>
     </div>
   </section>
@@ -52,7 +52,7 @@ function vehicleCard(title, meta, price, desc) {
         <p>${desc}</p>
         <div class="vehicle__bottom">
           <span class="price">${price}</span>
-          <a class="btn btn--ghost" href="/contact" data-link>Upit</a>
+          <a class="btn btn--ghost" href="/#/contact" data-link>Upit</a>
         </div>
       </div>
     </article>

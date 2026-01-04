@@ -5,8 +5,8 @@ export function renderLayout(content) {
         <a class="brand" href="/" data-link>
           <span class="brand__mark">TK</span>
           <span class="brand__text">
-            <strong>Transport & Kamioni</strong>
-            <small>Logistika • Prodaja • Servis</small>
+            <strong>Ibem Komerc</strong>
+            <small>Prevoz • Prodaja • Benzinska pumpa</small>
           </span>
         </a>
 
@@ -16,12 +16,12 @@ export function renderLayout(content) {
           </button>
 
           <div class="nav__links" data-menu>
-            <a href="/" data-link>Home</a>
-            <a href="/about" data-link>O nama</a>
-            <a href="/transport" data-link>Transport</a>
-            <a href="/sales" data-link>Prodaja</a>
-            <a href="/contact" data-link>Kontakt</a>
-            <a class="btn btn--primary" href="/contact" data-link>Zatraži ponudu</a>
+            <a href="/#/" data-link>Home</a>
+            <a href="/#/about" data-link>O nama</a>
+            <a href="/#/transport" data-link>Transport</a>
+            <a href="/#/sales" data-link>Prodaja</a>
+            <a href="/#/contact" data-link>Kontakt</a>
+            <a class="btn btn--primary" href="/#/contact" data-link>Zatraži ponudu</a>
           </div>
         </nav>
       </div>
@@ -37,36 +37,35 @@ export function renderLayout(content) {
           <div class="footer__brand">
             <span class="brand__mark">TK</span>
             <div>
-              <strong>Transport & Kamioni</strong>
+              <strong>Ibem Komerc</strong>
               <p class="muted">Pouzdan partner za logistiku i vozila.</p>
             </div>
           </div>
           <div class="footer__badges">
             <span class="badge">24/7 Podrška</span>
-            <span class="badge">EU Transport</span>
+            <span class="badge">EU i TR Transport</span>
             <span class="badge">Dokumentacija</span>
           </div>
         </div>
 
         <div>
           <h4>Brzi linkovi</h4>
-          <a href="/about" data-link>O nama</a>
-          <a href="/transport" data-link>Transport</a>
-          <a href="/sales" data-link>Prodaja kamiona</a>
-          <a href="/contact" data-link>Kontakt</a>
+          <a href="/#/about" data-link>O nama</a>
+          <a href="/#/transport" data-link>Transport</a>
+          <a href="/#/sales" data-link>Prodaja kamiona</a>
+          <a href="/#/contact" data-link>Kontakt</a>
         </div>
 
         <div>
           <h4>Kontakt</h4>
-          <p class="muted">Telefon: +387 61 123 456</p>
-          <p class="muted">Email: info@vasa-firma.ba</p>
-          <p class="muted">Adresa: Sarajevo, BiH</p>
+          <p class="muted">Telefon: 035 617-346</p>
+          <p class="muted">Email: ibemkomerc@gmail.com</p>
+          <p class="muted">Adresa: Miljanovci Kalesija, BiH</p>
         </div>
       </div>
 
       <div class="container footer__bottom">
-        <small class="muted">© ${new Date().getFullYear()} Transport & Kamioni. Sva prava zadržana.</small>
-        <small class="muted">Izrada web stranice: Vaše ime</small>
+        <small class="muted">© ${new Date().getFullYear()} Ibem Komerc. Sva prava zadržana.</small>
       </div>
     </footer>
   `;

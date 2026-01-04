@@ -19,9 +19,13 @@ function pathToView(path) {
   return routes[path] || NotFound;
 }
 
-function setActiveNav(pathname) {
-  document.querySelectorAll("[data-link]").forEach(a => {
-    const isActive = a.getAttribute("href") === pathname;
+function setActiveNav() {
+  const route = (window.location.hash.replace("#", "") || "/"); // npr "/about"
+  const currentHref = "/#" + route; // npr "/#/about" ili "/#/"
+
+  document.querySelectorAll(".nav__links [data-link]").forEach(a => {
+    const href = a.getAttribute("href");
+    const isActive = href === currentHref;
     a.classList.toggle("active", isActive);
   });
 }
@@ -31,15 +35,28 @@ function navigateTo(url) {
   router();
 }
 
+const normalizePath = (p) => {
+  // ako je /index.html, tretiraj kao /
+  if (p === "/index.html") return "/";
+  // ukloni trailing slash (osim za root)
+  if (p.length > 1 && p.endsWith("/")) return p.slice(0, -1);
+  return p;
+};
+
+function getRoute() {
+  return normalizePath(window.location.hash.replace("#", "") || "/");
+}
+
 async function router() {
-  const pathname = window.location.pathname;
+  const pathname = getRoute();
   const view = pathToView(pathname);
 
   // Layout + view content
   const html = renderLayout(await view());
   document.getElementById("app").innerHTML = html;
 
-  setActiveNav(pathname);
+  setActiveNav();
+
 
   // SPA links
   document.querySelectorAll("[data-link]").forEach(link => {
@@ -76,5 +93,6 @@ async function router() {
   }
 }
 
+window.addEventListener("hashchange", router);
 window.addEventListener("popstate", router);
 router();

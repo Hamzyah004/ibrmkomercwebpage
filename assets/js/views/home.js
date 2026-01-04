@@ -6,13 +6,13 @@ export default async function Home() {
         <div class="kicker">Pouzdan partner za logistiku i vozila</div>
         <h1>Transport, logistika i prodaja kamiona — sve na jednom mjestu.</h1>
         <p class="lead">
-          Siguran prevoz robe u BiH i EU, transparentne cijene i profesionalna podrška.
+          Siguran prevoz robe u BiH i šire, transparentne cijene i profesionalna podrška.
           Također nudimo provjerena vozila spremna za posao.
         </p>
 
         <div class="hero__cta">
-          <a class="btn btn--primary" href="/contact" data-link>Zatraži ponudu</a>
-          <a class="btn btn--ghost" href="/transport" data-link>Pogledaj usluge</a>
+          <a class="btn btn--primary" href="/#/contact" data-link>Zatraži ponudu</a>
+          <a class="btn btn--ghost" href="/#/transport" data-link>Pogledaj usluge</a>
         </div>
 
         <div class="stats">
@@ -30,32 +30,12 @@ export default async function Home() {
           </div>
         </div>
       </div>
-
-      <div class="hero__card">
-        <div class="card">
-          <div class="card__top">
-            <strong>Brzi upit</strong>
-            <span class="pill">Odgovor u roku 24h</span>
-          </div>
-          <div class="card__body">
-            <div class="mini">
-              <div class="mini__item">
-                <span class="mini__label">Tip usluge</span>
-                <span class="mini__value">Transport / Prodaja</span>
-              </div>
-              <div class="mini__item">
-                <span class="mini__label">Relacija</span>
-                <span class="mini__value">BiH ↔ EU</span>
-              </div>
-              <div class="mini__item">
-                <span class="mini__label">Vozni park</span>
-                <span class="mini__value">Kiper, šleper, hladnjača</span>
-              </div>
-            </div>
-            <a class="btn btn--primary btn--full" href="/contact" data-link>Pošalji upit</a>
-            <p class="muted tiny">* Tekst i podatke izmijeni prema svojoj firmi.</p>
-          </div>
-        </div>
+      <div class="hero__media">
+        <img
+          src="assets/img/hero-truck.jpg"
+          alt="Vozni park i transport"
+          loading="eager"
+        />
       </div>
     </div>
   </section>
@@ -87,7 +67,7 @@ export default async function Home() {
   <section class="section section--alt">
     <div class="container split">
       <div>
-        <h2>Transport koji se prilagođava vašem poslu</h2>
+        <h2 class="transport__info">Transport koji se prilagođava vašem poslu</h2>
         <p class="muted">
           Prevoz generalnog tereta, paletne robe, građevinskog materijala i specijalnih zahtjeva.
           Fokusirani smo na pouzdanost i dugoročnu saradnju.
@@ -98,23 +78,16 @@ export default async function Home() {
           <div class="check">Podrška za stalne klijente</div>
         </div>
         <div class="row">
-          <a class="btn btn--primary" href="/transport" data-link>Detalji usluge</a>
-          <a class="btn btn--ghost" href="/sales" data-link>Vozila u ponudi</a>
+          <a class="btn btn--primary" href="/#/transport" data-link>Detalji usluge</a>
+          <a class="btn btn--ghost" href="/#/sales" data-link>Vozila u ponudi</a>
         </div>
       </div>
-
-      <div class="panel">
-        <h3>Najčešće relacije</h3>
-        <div class="route">
-          <span>Sarajevo</span><span class="route__line"></span><span>Njemačka</span>
-        </div>
-        <div class="route">
-          <span>Tuzla</span><span class="route__line"></span><span>Austrija</span>
-        </div>
-        <div class="route">
-          <span>Mostar</span><span class="route__line"></span><span>Hrvatska</span>
-        </div>
-        <p class="muted tiny">* Ovo su primjeri, promijeni prema svojoj ponudi.</p>
+      <div class="hero__media">
+        <img
+          src="assets/img/hero-truck.jpg"
+          alt="Vozni park i transport"
+          loading="eager"
+        />
       </div>
     </div>
   </section>
@@ -153,8 +126,8 @@ export default async function Home() {
         <p class="muted">Kontaktirajte nas i dobijte odgovor u roku 24h.</p>
       </div>
       <div class="cta__actions">
-        <a class="btn btn--primary" href="/contact" data-link>Zatraži ponudu</a>
-        <a class="btn btn--ghost" href="/about" data-link>Ko smo mi</a>
+        <a class="btn btn--primary" href="/#/contact" data-link>Zatraži ponudu</a>
+        <a class="btn btn--ghost" href="/#/about" data-link>Ko smo mi</a>
       </div>
     </div>
   </section>

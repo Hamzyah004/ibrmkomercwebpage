@@ -5,7 +5,10 @@ export default async function Transport() {
       <div class="kicker">Transport</div>
       <h1>Logistička rješenja za domaći i međunarodni transport.</h1>
       <p class="lead muted">
-        Precizno planiranje ruta, sigurna isporuka i jasno definisani rokovi.
+        IBEM KOMERC d.o.o. je firma koja se bavi prevozom robe dugi niz godina na području: Italije, Španije, Portugala, Francuske, Madjarske, 
+        Rumunije, Bugarske i Turske. Uža specijalnost nam je zbirni transport iz Španije, Portugala i Turske. Od dana nastanka pa do danas, 
+        zadovoljni klijenti su dokaz našeg uspješnog poslovanja. Za razliku od drugih kompanija mi se možemo pohvaliti iskrenošću, poštenjem te 
+        profesionalnosti svih uposlenika. Pored kasko osiguranja vaše robe, koju prevozimo, naši kamioni su euro 6 norme, što dodatno povećava sigurnost robe.
       </p>
     </div>
   </section>
@@ -53,8 +56,8 @@ export default async function Transport() {
       </div>
 
       <div class="row">
-        <a class="btn btn--primary" href="/contact" data-link>Zatraži ponudu</a>
-        <a class="btn btn--ghost" href="/sales" data-link>Pogledaj vozila</a>
+        <a class="btn btn--primary" href="/#/contact" data-link>Zatraži ponudu</a>
+        <a class="btn btn--ghost" href="/#/sales" data-link>Pogledaj vozila</a>
       </div>
     </div>
   </section>

@@ -52,19 +52,21 @@ export default async function Contact() {
       <aside class="contact__info">
         <div class="card card--soft">
           <h2>Kontakt podaci</h2>
-          <p class="muted">Telefon: +387 61 123 456</p>
-          <p class="muted">Email: info@vasa-firma.ba</p>
-          <p class="muted">Adresa: Sarajevo, BiH</p>
+          <p class="muted">Telefon: 035 617 346</p>
+          <p class="muted">Email: ibemkomerc@gmail.com</p>
+          <p class="muted">Adresa: Miljanovci Kalesija, BiH</p>
           <div class="row">
-            <a class="btn btn--ghost" href="tel:+38761123456">Pozovi</a>
-            <a class="btn btn--ghost" href="mailto:info@vasa-firma.ba">Email</a>
+            <a class="btn btn--ghost" href="tel:+38735617346">Pozovi</a>
+            <a class="btn btn--ghost" href="mailto:ibemkomerc@gmail.com">Email</a>
           </div>
         </div>
 
         <div class="card map">
           <h2>Lokacija</h2>
           <div class="map__placeholder">
-            <p class="muted">Ovdje ubaci Google Maps embed (iframe) kad budeš htio.</p>
+            <div class="map-embed">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2847.6760262086214!2d18.839515!3d44.460314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDTCsDI3JzM3LjEiTiAxOMKwNTAnMjIuMyJF!5e0!3m2!1sen!2sba!4v1767530875651!5m2!1sen!2sba" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
           </div>
         </div>
       </aside>
