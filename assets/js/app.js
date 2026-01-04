@@ -69,6 +69,52 @@ function initScrollTopButton() {
   onScroll(); // set initial state
 }
 
+function initVehicleModal() {
+  const modal = document.getElementById("vehicleModal");
+  const content = document.getElementById("vehicleModalContent");
+  if (!modal || !content) return;
+
+  // Ne veži više puta
+  if (modal.dataset.bound === "1") return;
+  modal.dataset.bound = "1";
+
+  const open = (html) => {
+    content.innerHTML = html;
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+
+  const close = () => {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    content.innerHTML = "";
+    document.body.style.overflow = "";
+  };
+
+  // Close on X or backdrop click
+  modal.addEventListener("click", (e) => {
+    if (e.target.matches("[data-close]")) close();
+  });
+
+  // Close on ESC
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("is-open")) close();
+  });
+
+  // Delegate: klik na vehicle card otvara modal
+  document.addEventListener("click", (e) => {
+    const card = e.target.closest(".vehicle");
+    if (!card) return;
+
+    // Ako klikne na link/dugme unutar kartice, NE otvaraj modal
+    if (e.target.closest("a, button")) return;
+
+    open(card.outerHTML);
+  });
+}
+
+
 
 async function router() {
   const pathname = getRoute();
@@ -81,6 +127,8 @@ async function router() {
   setActiveNav();
 
   initScrollTopButton();
+
+  initVehicleModal();
 
 
   // SPA links

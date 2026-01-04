@@ -76,5 +76,13 @@ export function renderLayout(content) {
     <button id="scrollTopBtn" aria-label="Vrati na vrh">
       <img src="assets/img/strelicaTop.png" alt="">
     </button>
+    <div class="modal" id="vehicleModal" aria-hidden="true">
+      <div class="modal__backdrop" data-close></div>
+
+      <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Detalji vozila">
+        <button class="modal__close" type="button" aria-label="Zatvori" data-close>✕</button>
+        <div class="modal__content" id="vehicleModalContent"></div>
+      </div>
+    </div>
   `;
 }

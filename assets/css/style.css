@@ -730,6 +730,119 @@ input:focus, select:focus, textarea:focus{
   }
 }
 
+.prodaja{
+  padding-top: 0px;
+}
+
+.vehicle__img {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.vehicle__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* crop + zoom */
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.vehicle:hover .vehicle__img img {
+  transform: scale(1.08);
+}
+
+.vehicle__desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;   /* 3 ili 4 */
+  overflow: hidden;
+
+  white-space: normal;    /* 🔑 KLJUČNO */
+  line-height: 1.5;       /* da linije imaju visinu */
+}
+
+/* Modal base */
+.modal{
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+}
+
+.modal.is-open{ display: block; }
+
+/* Blur backdrop */
+.modal__backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(8px);
+}
+
+/* Panel */
+.modal__panel{
+  position: relative;
+  width: min(960px, calc(100% - 28px));
+  max-height: calc(100vh - 28px);
+  margin: 14px auto;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: rgba(11,15,23,.92);
+  box-shadow: var(--shadow);
+  overflow: auto;
+  transform: translateY(8px);
+  opacity: 0;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.modal.is-open .modal__panel{
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal__close{
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Big vehicle layout inside modal */
+.modal .vehicle{
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 16px;
+  padding: 16px;
+}
+
+@media (max-width: 900px){
+  .modal .vehicle{
+    grid-template-columns: 1fr;
+  }
+}
+
+.modal .vehicle__img{
+  height: clamp(260px, 35vw, 460px);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.modal .vehicle__desc{
+  -webkit-line-clamp: unset; /* pokaži full tekst u modalu */
+  overflow: visible;
+}
+
+
+
+
 
 
 
