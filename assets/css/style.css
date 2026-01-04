@@ -530,5 +530,210 @@ input:focus, select:focus, textarea:focus{
   display: block;
 }
 
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand__logo{
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--line);
+}
+
+.brand__logo img{
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  display: block;
+}
+
+
+.footer__brand{
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.footer__logo{
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--line);
+  flex-shrink: 0;
+}
+
+.footer__logo img{
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  display: block;
+}
+
+.footer__logo{
+  width: 44px;
+  height: 44px;
+}
+
+.brand__logo{
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--line);
+
+  /* KLJUČNO */
+  transform: scale(1);
+  transition: transform .25s ease;
+  will-change: transform;
+}
+
+/* 🖱️ DESKTOP hover */
+@media (hover: hover) and (pointer: fine){
+  .brand__logo:hover{
+    transform: scale(1.15);
+  }
+}
+
+/* 📱 MOBILE tap */
+@media (hover: none) and (pointer: coarse){
+  .brand__logo:active{
+    transform: scale(1.15);
+  }
+}
+
+#scrollTopBtn{
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(249,115,22,.45);
+
+  color: #fff;
+  font-size: 22px;
+  font-weight: 800;
+
+  cursor: pointer;
+  z-index: 999;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+
+  transition:
+    opacity .25s ease,
+    transform .25s ease,
+    background .2s ease,
+    box-shadow .2s ease;
+}
+
+/* prikaz */
+#scrollTopBtn.show{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* hover desktop */
+@media (hover: hover) and (pointer: fine){
+  #scrollTopBtn:hover{
+    background: rgba(249,115,22,.9);
+    box-shadow: 0 10px 30px rgba(249,115,22,.45);
+  }
+}
+
+/* tap mobile */
+@media (hover: none) and (pointer: coarse){
+  #scrollTopBtn:active{
+    background: rgba(249,115,22,.9);
+  }
+}
+
+#scrollTopBtn{
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(249,115,22,.45);
+
+  cursor: pointer;
+  z-index: 999;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+
+  transition:
+    opacity .25s ease,
+    transform .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+#scrollTopBtn.show{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+#scrollTopBtn img{
+  width: 110%;
+  height: 110%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none; /* da klik ide na dugme */
+  transition: transform .25s ease;
+}
+
+@media (hover: hover) and (pointer: fine){
+  #scrollTopBtn:hover{
+    background: rgba(249,115,22,.9);
+    box-shadow: 0 10px 30px rgba(249,115,22,.45);
+  }
+
+  #scrollTopBtn:hover img{
+    transform: scale(1.15);
+  }
+}
+
+@media (hover: none) and (pointer: coarse){
+  #scrollTopBtn:active img{
+    transform: scale(1.12);
+  }
+}
+
+
+
+
+
+
 
 

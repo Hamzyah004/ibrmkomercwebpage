@@ -2,8 +2,11 @@ export function renderLayout(content) {
   return `
     <header class="header">
       <div class="container header__inner">
-        <a class="brand" href="/" data-link>
-          <span class="brand__mark">TK</span>
+        <a class="brand" href="/#/" data-link>
+          <span class="brand__logo">
+            <img src="assets/img/icon.png" alt="Ibem Komerc logo">
+          </span>
+
           <span class="brand__text">
             <strong>Ibem Komerc</strong>
             <small>Prevoz • Prodaja • Benzinska pumpa</small>
@@ -35,7 +38,9 @@ export function renderLayout(content) {
       <div class="container footer__grid">
         <div>
           <div class="footer__brand">
-            <span class="brand__mark">TK</span>
+            <span class="footer__logo">
+              <img src="assets/img/icon.png" alt="Ibem Komerc logo">
+            </span>
             <div>
               <strong>Ibem Komerc</strong>
               <p class="muted">Pouzdan partner za logistiku i vozila.</p>
@@ -68,5 +73,8 @@ export function renderLayout(content) {
         <small class="muted">© ${new Date().getFullYear()} Ibem Komerc. Sva prava zadržana.</small>
       </div>
     </footer>
+    <button id="scrollTopBtn" aria-label="Vrati na vrh">
+      <img src="assets/img/strelicaTop.png" alt="">
+    </button>
   `;
 }

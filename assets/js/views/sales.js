@@ -32,8 +32,8 @@ export default async function Sales() {
         </div>
       </div>
 
-      <div class="panel">
-        <h3>Treba određeni model?</h3>
+      <div class="panel" style="margin-bottom:0px; margin-top: auto;">
+        <h3>Trebate određeni model?</h3>
         <p class="muted">Pošalji nam budžet, godište i namjenu — predložićemo opcije.</p>
         <a class="btn btn--primary btn--full" href="/#/contact" data-link>Pošalji upit</a>
       </div>

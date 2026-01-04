@@ -6,7 +6,7 @@ export default async function Home() {
         <div class="kicker">Pouzdan partner za logistiku i vozila</div>
         <h1>Transport, logistika i prodaja kamiona — sve na jednom mjestu.</h1>
         <p class="lead">
-          Siguran prevoz robe u BiH i šire, transparentne cijene i profesionalna podrška.
+          Siguran prevoz robe u EU i šire, transparentne cijene i profesionalna podrška.
           Također nudimo provjerena vozila spremna za posao.
         </p>
 

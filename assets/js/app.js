@@ -47,6 +47,29 @@ function getRoute() {
   return normalizePath(window.location.hash.replace("#", "") || "/");
 }
 
+function initScrollTopButton() {
+  const btn = document.getElementById("scrollTopBtn");
+  if (!btn) return;
+
+  // spriječi duplo vezanje na svaku navigaciju
+  if (btn.dataset.bound === "1") return;
+  btn.dataset.bound = "1";
+
+  const onScroll = () => {
+    if (window.scrollY > 300) btn.classList.add("show");
+    else btn.classList.remove("show");
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  onScroll(); // set initial state
+}
+
+
 async function router() {
   const pathname = getRoute();
   const view = pathToView(pathname);
@@ -56,6 +79,8 @@ async function router() {
   document.getElementById("app").innerHTML = html;
 
   setActiveNav();
+
+  initScrollTopButton();
 
 
   // SPA links
@@ -91,7 +116,11 @@ async function router() {
       contactForm.reset();
     });
   }
+  window.scrollTo(0, 0);
 }
+
+
+
 
 window.addEventListener("hashchange", router);
 window.addEventListener("popstate", router);
