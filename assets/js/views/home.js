@@ -35,6 +35,7 @@ export default async function Home() {
           src="assets/img/hero-truck.jpg"
           alt="Vozni park i transport"
           loading="eager"
+          style="object-position: 20% center;"
         />
       </div>
     </div>
@@ -84,9 +85,10 @@ export default async function Home() {
       </div>
       <div class="hero__media">
         <img
-          src="assets/img/hero-truck.jpg"
+          src="assets/img/home-trucks.jpeg"
           alt="Vozni park i transport"
           loading="eager"
+          style="object-position: 10% center;"
         />
       </div>
     </div>

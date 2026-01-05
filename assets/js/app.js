@@ -5,6 +5,8 @@ import About from "./views/about.js";
 import Transport from "./views/transport.js";
 import Sales from "./views/sales.js";
 import Contact from "./views/contact.js";
+import AdminLogin from "./views/admin.js";
+import AdminPanel from "./views/adminpanel.js";
 import NotFound from "./views/notfound.js";
 
 const routes = {
@@ -12,7 +14,9 @@ const routes = {
   "/about": About,
   "/transport": Transport,
   "/sales": Sales,
-  "/contact": Contact
+  "/contact": Contact,
+  "/admin": AdminLogin,
+  "/admin/panel": AdminPanel,
 };
 
 function pathToView(path) {
@@ -20,10 +24,10 @@ function pathToView(path) {
 }
 
 function setActiveNav() {
-  const route = (window.location.hash.replace("#", "") || "/"); // npr "/about"
-  const currentHref = "/#" + route; // npr "/#/about" ili "/#/"
+  const route = window.location.hash.replace("#", "") || "/";
+  const currentHref = "/#" + route;
 
-  document.querySelectorAll(".nav__links [data-link]").forEach(a => {
+  document.querySelectorAll(".nav__links [data-link]").forEach((a) => {
     const href = a.getAttribute("href");
     const isActive = href === currentHref;
     a.classList.toggle("active", isActive);
@@ -36,9 +40,7 @@ function navigateTo(url) {
 }
 
 const normalizePath = (p) => {
-  // ako je /index.html, tretiraj kao /
   if (p === "/index.html") return "/";
-  // ukloni trailing slash (osim za root)
   if (p.length > 1 && p.endsWith("/")) return p.slice(0, -1);
   return p;
 };
@@ -51,7 +53,6 @@ function initScrollTopButton() {
   const btn = document.getElementById("scrollTopBtn");
   if (!btn) return;
 
-  // spriječi duplo vezanje na svaku navigaciju
   if (btn.dataset.bound === "1") return;
   btn.dataset.bound = "1";
 
@@ -66,7 +67,7 @@ function initScrollTopButton() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  onScroll(); // set initial state
+  onScroll();
 }
 
 function initVehicleModal() {
@@ -74,7 +75,6 @@ function initVehicleModal() {
   const content = document.getElementById("vehicleModalContent");
   if (!modal || !content) return;
 
-  // Ne veži više puta
   if (modal.dataset.bound === "1") return;
   modal.dataset.bound = "1";
 
@@ -92,47 +92,110 @@ function initVehicleModal() {
     document.body.style.overflow = "";
   };
 
-  // Close on X or backdrop click
   modal.addEventListener("click", (e) => {
     if (e.target.matches("[data-close]")) close();
   });
 
-  // Close on ESC
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modal.classList.contains("is-open")) close();
   });
 
-  // Delegate: klik na vehicle card otvara modal
   document.addEventListener("click", (e) => {
     const card = e.target.closest(".vehicle");
     if (!card) return;
-
-    // Ako klikne na link/dugme unutar kartice, NE otvaraj modal
     if (e.target.closest("a, button")) return;
-
     open(card.outerHTML);
   });
 }
 
+/* =========================
+   ADMIN INIT (Supabase Auth)
+========================= */
 
+function initAdminLogin() {
+  const form = document.getElementById("adminLoginForm");
+  if (!form) return;
+  if (form.dataset.bound === "1") return;
+  form.dataset.bound = "1";
+
+  const err = document.getElementById("adminLoginError");
+
+  // Ako je već ulogovan, preskoči login
+  window.supabaseClient.auth.getSession().then(({ data }) => {
+    if (data.session) window.location.hash = "#/admin/panel";
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const fd = new FormData(form);
+    const username = String(fd.get("username") || "").trim();
+    const password = String(fd.get("password") || "");
+
+    // username -> email (Supabase Auth radi s emailom)
+    const email = `${username}@ibemkomerc.local`;
+
+    if (err) err.style.display = "none";
+
+    const { error } = await window.supabaseClient.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      if (err) {
+        err.textContent = "Pogrešan username ili password.";
+        err.style.display = "block";
+      }
+      return;
+    }
+
+    window.location.hash = "#/admin/panel";
+  });
+}
+
+function initAdminPanel() {
+  const btn = document.getElementById("adminLogoutBtn");
+  if (!btn) return;
+  if (btn.dataset.bound === "1") return;
+  btn.dataset.bound = "1";
+
+  btn.addEventListener("click", async () => {
+    await window.supabaseClient.auth.signOut();
+    window.location.hash = "#/admin";
+  });
+}
+
+/* =========================
+   ROUTER
+========================= */
 
 async function router() {
   const pathname = getRoute();
+
+  // Admin guard: blokira /admin/panel ako nema Supabase session
+  if (pathname.startsWith("/admin") && pathname !== "/admin") {
+    const { data } = await window.supabaseClient.auth.getSession();
+    if (!data.session) {
+      window.location.hash = "#/admin";
+      return;
+    }
+  }
+
   const view = pathToView(pathname);
 
-  // Layout + view content
   const html = renderLayout(await view());
   document.getElementById("app").innerHTML = html;
 
   setActiveNav();
-
   initScrollTopButton();
-
   initVehicleModal();
 
+  if (pathname === "/admin") initAdminLogin();
+  if (pathname === "/admin/panel") initAdminPanel();
 
   // SPA links
-  document.querySelectorAll("[data-link]").forEach(link => {
+  document.querySelectorAll("[data-link]").forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
       navigateTo(link.getAttribute("href"));
@@ -148,27 +211,41 @@ async function router() {
       btn.setAttribute("aria-expanded", String(open));
     });
 
-    // close menu after click
-    menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
-      menu.classList.remove("open");
-      btn.setAttribute("aria-expanded", "false");
-    }));
+    menu.querySelectorAll("a").forEach((a) =>
+      a.addEventListener("click", () => {
+        menu.classList.remove("open");
+        btn.setAttribute("aria-expanded", "false");
+      })
+    );
   }
 
-  // Simple form handler (demo)
+  // Contact form demo
   const contactForm = document.querySelector("[data-contact-form]");
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      alert("Hvala! Poruka je poslana (demo). Poveži sa backendom ili form servisom.");
+      alert(
+        "Hvala! Poruka je poslana (demo). Poveži sa backendom ili form servisom."
+      );
       contactForm.reset();
     });
   }
+
   window.scrollTo(0, 0);
 }
 
+/* =========================
+   SUPABASE CLIENT (PASTE YOUR KEYS)
+========================= */
 
+const SUPABASE_URL = "https://mydyghfcjzadehvppcyq.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im15ZHlnaGZjanphZGVodnBwY3lxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc2MjAzNTcsImV4cCI6MjA4MzE5NjM1N30.WDyTA7460ysB8WM1Lx7o9cCce6rfXSxMlveJVW_hjPs";
 
+window.supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+/* =========================
+   BOOT
+========================= */
 
 window.addEventListener("hashchange", router);
 window.addEventListener("popstate", router);

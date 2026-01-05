@@ -45,8 +45,7 @@ export default async function Contact() {
           <textarea rows="6" placeholder="Napišite relaciju, tip tereta, termin ili zahtjev za vozilo..."></textarea>
         </label>
 
-        <button class="btn btn--primary btn--full" type="submit">Pošalji</button>
-        <p class="muted tiny">* Ovo je demo submit. Poveži kasnije sa backendom ili form servisom.</p>
+        <button class="btn btn--primary btn--full" type="submit" style="margin-top: 18px; border: none;">Pošalji</button>
       </form>
 
       <aside class="contact__info">

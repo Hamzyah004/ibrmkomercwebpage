@@ -16,9 +16,10 @@ export default async function About() {
         </p>
         <div class="hero__media">
           <img
-            src="assets/img/hero-truck.jpg"
+            src="assets/img/mainTruck.jpeg"
             alt="Vozni park i transport"
             loading="eager"
+            style="object-position: 80% center;"
           />
         </div>
       </div>
@@ -46,7 +47,7 @@ export default async function About() {
   <div class="container hero__grid">
     <div class="hero__media">
       <img
-        src="assets/img/hero-truck.jpg"
+        src="assets/img/pumpa.jpg"
         alt="Vozni park i transport"
         loading="eager"
       />
