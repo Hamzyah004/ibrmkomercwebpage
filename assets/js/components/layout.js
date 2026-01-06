@@ -38,7 +38,7 @@ export function renderLayout(content) {
       <div class="container footer__grid">
         <div>
           <div class="footer__brand">
-            <span class="footer__logo">
+            <span class="footer__logo" id="footerAdminLogo">
               <img src="assets/img/icon.png" alt="Ibem Komerc logo">
             </span>
             <div>
@@ -86,3 +86,4 @@ export function renderLayout(content) {
     </div>
   `;
 }
+

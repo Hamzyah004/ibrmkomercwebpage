@@ -93,6 +93,9 @@ function initVehicleModal() {
   };
 
   modal.addEventListener("click", (e) => {
+    // zatvori modal kad klikneš bilo koji SPA link unutar modala (npr. "Upit")
+    if (e.target.closest('a[data-link]')) close();
+
     if (e.target.matches("[data-close]")) close();
   });
 
@@ -166,12 +169,48 @@ function initAdminPanel() {
   });
 }
 
+function initFooterAdminLink() {
+  const logo = document.getElementById("footerAdminLogo");
+  if (!logo || logo.dataset.bound === "1") return;
+  logo.dataset.bound = "1";
+
+  let clicks = 0;
+  let timer = null;
+
+  logo.style.cursor = "pointer";
+  logo.title = "Ibem Komerc";
+
+  logo.addEventListener("click", () => {
+    clicks++;
+
+    if (clicks >= 3) {
+      location.hash = "#/admin";
+      clicks = 0;
+      clearTimeout(timer);
+    }
+
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      clicks = 0;
+    }, 1500);
+  });
+}
+
 /* =========================
    ROUTER
 ========================= */
 
 async function router() {
   const pathname = getRoute();
+
+  const modal = document.getElementById("vehicleModal");
+  const content = document.getElementById("vehicleModalContent");
+  if (modal && modal.classList.contains("is-open")) {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    if (content) content.innerHTML = "";
+    document.body.style.overflow = "";
+  }
 
   // Admin guard: blokira /admin/panel ako nema Supabase session
   if (pathname.startsWith("/admin") && pathname !== "/admin") {
@@ -190,6 +229,7 @@ async function router() {
   setActiveNav();
   initScrollTopButton();
   initVehicleModal();
+  initFooterAdminLink();
 
   if (pathname === "/admin") initAdminLogin();
   if (pathname === "/admin/panel") initAdminPanel();
