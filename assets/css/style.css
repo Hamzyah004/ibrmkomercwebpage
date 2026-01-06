@@ -425,7 +425,6 @@ input:focus, select:focus, textarea:focus{
   }
   .nav__links.open{display:flex}
   .nav__links a{padding:12px 12px}
-  .hero{padding-top: 14px;}
 }
 
 .hero__media{
