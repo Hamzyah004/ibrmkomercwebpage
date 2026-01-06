@@ -1,6 +1,6 @@
 export default async function Home() {
   return `
-  <section class="hero">
+  <section class="hero" style="padding-top:54px;">
     <div class="container hero__grid">
       <div class="hero__content">
         <div class="kicker">Pouzdan partner za logistiku i vozila</div>
